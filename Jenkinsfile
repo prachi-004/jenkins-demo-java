@@ -10,8 +10,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mkdir out'
+                // Create output folder if not exists
+                bat 'if not exist out mkdir out'
+                
+                // Compile Java from src_java
                 bat 'javac -d out src_java\\HelloWorld.java'
+                
+                // Run the program
                 bat 'java -cp out HelloWorld'
             }
         }
