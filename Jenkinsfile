@@ -4,13 +4,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/<username>/<repo>.git'
+                git branch: 'main', url: 'https://github.com/prachi-004/jenkins-demo-java.git'
             }
         }
 
         stage('Build') {
             steps {
-                // your build steps here
+                bat 'mkdir out'
+                bat 'javac -d out src\\HelloWorld.java'
+                bat 'java -cp out HelloWorld'
             }
         }
     }
