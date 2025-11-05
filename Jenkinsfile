@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/<your-username>/jenkins-demo-java.git'
+                git branch: 'main', url: 'https://github.com/<username>/<repo>.git'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'bash build.sh'
+                // your build steps here
             }
         }
     }
